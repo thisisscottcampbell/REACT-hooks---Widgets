@@ -10,7 +10,7 @@ const Search = (props) => {
 
 	useEffect(() => {
 		const searchWiki = async () => {
-			const { data } = await axios.get('https://en.wikipedia.org/w/api/php', {
+			const { data } = await axios.get('https://en.wikipedia.org/w/api.php', {
 				params: {
 					action: 'query',
 					list: 'search',
@@ -29,7 +29,7 @@ const Search = (props) => {
 		});
 
 		return () => {
-			clearTimeout(timeouId);
+			clearTimeout(timeoutId);
 		};
 	}, [term]);
 
@@ -64,7 +64,6 @@ const Search = (props) => {
 						onChange={(e) => setTerm(e.target.value)}
 						className="input"
 					/>
-					{term}
 				</div>
 			</div>
 			<div className="ui celled list">{displayResults}</div>
