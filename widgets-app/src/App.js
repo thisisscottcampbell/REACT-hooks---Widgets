@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-// import Accordion from './components/Accordion';
-// import Search from './components/Search';
-// import DropDown from './components/Translate/sDropDown';
+import Accordion from './components/Accordion';
+import Search from './components/Search';
+import DropDown from './components/Translate/DropDown';
 import Translate from './components/Translate/Translate';
 const items = [
 	{
@@ -34,24 +34,32 @@ const appOptions = [
 ];
 
 const App = () => {
+	const wpl = window.location.pathname;
 	// const [selected, setSelected] = useState(options[0]);
 	// const [showDropDown, setShowDropDown] = useState(true);
 
+	// const showAccordion = () => {
+	// 	if (window.location.pathname === '/') return <Accordion items={items} />;
+	// };
+
+	// const showList = () => {
+	// 	if (window.location.pathname === '/list') return <Search />;
+	// };
+
+	// const showDropDown = () => {
+	// 	if (window.location.pathname === '/dropdown') return <DropDown />;
+	// };
+
+	// const showTranslate = () => {
+	// 	if (window.location.pathname === '/translate') return <Translate />;
+	//};
+
 	return (
 		<div>
-			{/* <button onClick={() => setShowDropDown(!showDropDown)}>
-				Toggle Dropdown
-			</button>
-			{showDropDown && (
-				<DropDown
-					selected={selected}
-					setSelected={setSelected}
-					options={appOptions}
-				/>
-			)} */}
-			{/* <Accordion items={items} />
-      <Search /> */}
-			<Translate />
+			{wpl === '/' && <Accordion items={items} />}
+			{wpl === '/list' && <Search />}
+			{wpl === '/dropdown' && <DropDown />}
+			{wpl === '/translate' && <Translate />}
 		</div>
 	);
 };
